@@ -1,0 +1,36 @@
+CREATE TABLE IPhone(
+                       id SERIAL NOT NULL ,
+                       productName VARCHAR(250) NOT NULL ,
+                       namuFacture VARCHAR(250) NOT NULL ,
+                       productCount INTEGER DEFAULT 0,
+                       price NUMERIC NOT NULL,
+                       isDiscounted bool
+);
+INSERT INTO IPhone(productName,namuFacture,productCount,price,isDiscounted)
+VALUES ('IPhone 8','Apple',1,71000,true),
+       ('IPhone X','Apple',2,56000, false),
+       ('Galaxy s9','Samsung',3,56000,true),
+       ('Galaxy s8 Plus','Samsung',4,46000,false),
+       ('Desire 12','HTC',5,26000, true);
+
+SELECT * FROM IPhone;
+
+SELECT * FROM IPhone WHERE namuFacture IN('Apple','Samsung') ;
+
+SELECT * FROM IPhone WHERE namuFacture = 'Apple' AND price < 75000;
+
+SELECT * FROM IPhone WHERE price >= 46000;
+
+SELECT * FROM IPhone MAX(price)  LIMIT 2;
+
+SELECT MIN(productName) FROM IPhone;
+
+SELECT * FROM IPhone WHERE isDiscounted = true;
+
+SELECT * FROM IPhone WHERE isDiscounted = false;
+
+SELECT price FROM IPhone  ORDER BY price DESC ;
+
+SELECT SUM(price) FROM IPhone ;
+
+SELECT * FROM IPhone WHERE IPhone.productCount <= 2;
